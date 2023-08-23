@@ -1,0 +1,61 @@
+<% layout("layouts/boilerplate_index") %>
+
+<script
+  src="https://code.jquery.com/jquery-3.7.0.min.js"
+  integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
+  crossorigin="anonymous"
+></script>
+
+<%- include("../partials/typeSelect.ejs") %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-5">
+      <div class="container" id="bnb-container">
+        <% for (let bnb of bnbs.docs) { %>
+        <div class="card mb-3">
+          <div class="row">
+            <img class="card-img-top" src="<%= bnb.image.length ?
+            bnb.image[0].url : "" %>" alt="" />
+            <div class="card-body mx-3">
+              <h5 class="card-title"><%= bnb.location %></h5>
+              <p class="card-text text-muted mb-1">
+                <%= bnb.title %> <%= bnb.type %>
+              </p>
+              <a
+                class="stretched-link mt-0"
+                href="/homes/<%= bnb._id %>"
+                style="color: black"
+              >
+                $<%= bnb.price %>/night before taxes
+              </a>
+            </div>
+          </div>
+        </div>
+        <% } %>
+      </div>
+      <div class="text-center mb-3">
+        <a
+          href="/homes?page=<%= bnbs.nextPage %>"
+          class="btn btn-primary"
+          id="paginate"
+          >View More</a
+        >
+      </div>
+    </div>
+
+    <div class="col-7 mb-3">
+      <div class="sticky-top">
+        <div id="cluster-map"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const token = "<%- process.env.MAPBOX_TOKEN %>";
+  const bnbs = {features: <%- JSON.stringify(bnbs.docs) %>};
+</script>
+
+<script src="/js/clusterMap.js"></script>
+<script src="/js/pagination.js"></script>

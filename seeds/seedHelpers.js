@@ -1,0 +1,41 @@
+module.exports.descriptors = [
+  "Forest",
+  "Redwood",
+  "Maple",
+  "Elk",
+  "Ocean",
+  "Sky",
+  "Diamond",
+  "Bustling",
+  "Picturesque",
+  "Serene",
+  "Vibrant",
+  "Historic",
+  "Tranquil",
+  "Pristine",
+  "Exotic",
+  "Cozy",
+];
+
+module.exports.places = [
+  "Flats",
+  "Village",
+  "Canyon",
+  "Pond",
+  "River",
+  "Creek",
+  "Creekside",
+  "Bay",
+  "Spring",
+  "Bayshore",
+  "Sands",
+  "Cliffs",
+  "Bridge",
+  "Island",
+  "Square",
+  "Park",
+  "Tower",
+  "Beach",
+];
+
+module.exports.types = ["House", "Apartment", "Guesthouse", "Hotel"];

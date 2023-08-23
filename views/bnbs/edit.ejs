@@ -1,0 +1,79 @@
+<% layout("layouts/boilerplate") %>
+
+<div class="row">
+  <h1 class="text-center">Edit Property</h1>
+  <div class="col-6 offset-3">
+    <form
+      action="/homes/<%= bnb._id %>?_method=PUT"
+      method="POST"
+      class="needs-validation"
+      novalidate
+      enctype="multipart/form-data"
+    >
+      <div class="mb-3">
+        <label class="form-label" for="title">Title</label>
+        <input
+          class="form-control"
+          type="text"
+          id="title"
+          name="bnb[title]"
+          value="<%= bnb.title %>"
+          required
+        />
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="location">Location</label>
+        <input
+          class="form-control"
+          type="text"
+          id="location"
+          name="bnb[location]"
+          value="<%= bnb.location %>"
+          required
+        />
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="price">Price</label>
+        <input
+          class="form-control"
+          type="number"
+          id="price"
+          name="bnb[price]"
+          value="<%= bnb.price %>"
+          required
+        />
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="description">Description</label>
+        <textarea
+          class="form-control"
+          type="text"
+          id="description"
+          name="bnb[description]"
+          required
+        >
+        <%= bnb.description %>
+        </textarea>
+      </div>
+
+      <div class="mb-3">
+        <label for="formFile" class="form-label">Add Image(s)</label>
+        <input
+          class="form-control"
+          type="file"
+          id="formFile"
+          id="image"
+          name="image"
+          multiple
+        />
+      </div>
+
+      <div class="mt-3 mb-3">
+        <button class="btn btn-success">Update Property</button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,141 @@
+<% layout("layouts/boilerplate") %>
+<link rel="stylesheet" href="/styles/stars.css" />
+
+<div class="row">
+  <div class="col-6">
+    <div class="card mb-3">
+      <div id="carouselExample" class="carousel slide">
+        <div class="carousel-inner">
+          <% bnb.image.forEach((img, i) => { %>
+          <div class="carousel-item <%= i === 0 ? 'active' : '' %>">
+            <img src="<%= img.url %>" class="d-block w-100" alt="..." />
+          </div>
+          <% }) %>
+        </div>
+        <% if(bnb.image.length >1) { %>
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#carouselExample"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselExample"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+        <% } %>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"><%= bnb.title %> <%= bnb.type %></h5>
+        <p class="card-text"><%= bnb.description %></p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item text-muted"><%= bnb.location %></li>
+        <li class="list-group-item text-muted">
+          Submitted by <%= bnb.author.username %>
+        </li>
+        <li class="list-group-item">$<%= bnb.price %>/night</li>
+      </ul>
+      <div class="card-info">
+        <a
+          class="card-link btn btn-warning m-2"
+          href="/homes/<%= bnb._id %>/edit"
+          >Edit Property</a
+        >
+        <form
+          class="d-inline"
+          action="/homes/<%= bnb._id %>?_method=DELETE"
+          method="POST"
+        >
+          <button class="btn btn-warning m-2">Delete</button>
+        </form>
+        <a class="card-link btn btn-warning m-2" href="/homes"
+          >All Properties</a
+        >
+      </div>
+    </div>
+  </div>
+
+  <div class="col-6">
+    <div class="mb-3">
+      <div id="map"></div>
+    </div>
+    <h2>Leave a Review</h2>
+    <form
+      class="mb-3 needs-validation"
+      action="/homes/<%= bnb._id %>/reviews"
+      method="POST"
+      novalidate
+    >
+      <fieldset class="starability-basic">
+        <input
+          type="radio"
+          id="no-rate"
+          class="input-no-rate"
+          name="review[rating]"
+          value="1"
+          checked
+          aria-label="No rating."
+        />
+        <input type="radio" id="second-rate1" name="review[rating]" value="1" />
+        <label for="second-rate1" title="Terrible">1 star</label>
+        <input type="radio" id="second-rate2" name="review[rating]" value="2" />
+        <label for="second-rate2" title="Not good">2 stars</label>
+        <input type="radio" id="second-rate3" name="review[rating]" value="3" />
+        <label for="second-rate3" title="Average">3 stars</label>
+        <input type="radio" id="second-rate4" name="review[rating]" value="4" />
+        <label for="second-rate4" title="Very good">4 stars</label>
+        <input type="radio" id="second-rate5" name="review[rating]" value="5" />
+        <label for="second-rate5" title="Amazing">5 stars</label>
+      </fieldset>
+      <div class="mb-3">
+        <label class="form-label" for="body">Review Text</label>
+        <textarea
+          class="form-control"
+          name="review[body]"
+          id="body"
+          cols="30"
+          rows="3"
+          required
+        ></textarea>
+      </div>
+      <button class="btn btn-success">Submit</button>
+    </form>
+    <h2>All Reviews</h2>
+    <% for (let review of bnb.reviews) { %>
+    <div class="card mb-3">
+      <div class="card-body">
+        <h5 class="card-title">Rated by <%= review.author.username %></h5>
+        <p class="starability-result" data-rating="<%= review.rating %>">
+          Rated <%= review.rating %> stars
+        </p>
+        <!-- <h6 class="card-subtitle mb-2 text-muted">
+          By <%= review.author.username %>
+        </h6> -->
+        <p class="card-text"><%= review.body %></p>
+        <form
+          action="/homes/<%= bnb._id %>/reviews/<%= review._id %>?_method=DELETE"
+          method="POST"
+        >
+          <button class="btn btn-danger">Delete</button>
+        </form>
+      </div>
+    </div>
+    <% } %>
+  </div>
+</div>
+
+<script>
+  const token = "<%- process.env.MAPBOX_TOKEN %>";
+  const bnb = <%- JSON.stringify(bnb) %>;
+</script>
+
+<script src="/js/map.js"></script>

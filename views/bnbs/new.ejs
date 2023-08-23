@@ -1,0 +1,91 @@
+<% layout("layouts/boilerplate") %>
+
+<div class="row">
+  <h1 class="text-center">New Property</h1>
+  <div class="col-6 offset-3">
+    <form
+      action="/homes"
+      method="POST"
+      novalidate
+      class="needs-validation"
+      enctype="multipart/form-data"
+    >
+      <div class="mb-3">
+        <label class="form-label" for="title">Title</label>
+        <input
+          class="form-control"
+          type="text"
+          id="title"
+          name="bnb[title]"
+          required
+        />
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="type">Type</label>
+        <select
+          class="form-control"
+          id="title"
+          name="bnb[type]"
+          aria-label="Select Type"
+          required
+        >
+          <option selected>Open this select menu</option>
+          <option value="1">House</option>
+          <option value="2">Apartment</option>
+          <option value="3">Hotel</option>
+          <option value="4">Guesthouse</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="location">Location</label>
+        <input
+          class="form-control"
+          type="text"
+          id="location"
+          name="bnb[location]"
+          required
+        />
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="price">Price</label>
+        <input
+          class="form-control"
+          type="number"
+          id="price"
+          name="bnb[price]"
+          required
+        />
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="description">Description</label>
+        <textarea
+          class="form-control"
+          type="text"
+          id="description"
+          name="bnb[description]"
+          required
+        ></textarea>
+      </div>
+
+      <div class="mb-3">
+        <label for="formFile" class="form-label">Choose Image(s)</label>
+        <input
+          class="form-control"
+          type="file"
+          id="formFile"
+          id="image"
+          name="image"
+          multiple
+        />
+      </div>
+
+      <div class="mt-3 mb-3">
+        <button class="btn btn-success">Add Property</button>
+      </div>
+    </form>
+  </div>
+</div>
