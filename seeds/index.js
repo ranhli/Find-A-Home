@@ -5,7 +5,7 @@ const Bnb = require("../models/bnb");
 const srcs = require("./images");
 
 mongoose
-  .connect("mongodb://localhost:27017/bnbApp")
+  .connect(process.env.DB_URL)
   .then(() => {
     console.log("MONGODB CONNECTION OPEN");
   })
@@ -39,7 +39,7 @@ const seedDB = async () => {
       ],
       description:
         "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Non exercitationem culpa esse atque labore soluta possimus sed sint est illum incidunt tenetur, enim earum quidem eligendi voluptatem alias temporibus consectetur!",
-      author: "64dd9046dcb1c04715df5df6",
+      author: "64e6ca8e276b76217690602c",
     });
     await b.save();
   }
