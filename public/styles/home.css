@@ -3,9 +3,10 @@ body {
   background: linear-gradient(#f6bd60, #669bbc);
   background-size: cover;
   background-position: center;
+  overflow: hidden;
 }
 .cover-container {
-  max-width: 60vw;
+  max-width: 90vw;
 }
 
 .nav-link {
@@ -30,4 +31,31 @@ body {
 .btn-secondary:hover {
   color: #333;
   text-shadow: none;
+}
+
+@media (max-width: 767px) {
+  .float-md-left {
+    visibility: hidden;
+  }
+  .nav-link {
+    padding: 0;
+  }
+}
+
+@media (max-width: 552px) {
+  .col-1 {
+    visibility: hidden;
+    width: 0;
+    height: 0;
+    display: inline;
+  }
+  .col-5 {
+    visibility: hidden;
+    width: 0;
+    height: 0;
+    display: inline;
+  }
+  .col-6 {
+    width: 100vw;
+  }
 }

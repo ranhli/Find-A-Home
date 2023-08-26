@@ -1,0 +1,22 @@
+@media (max-width: 456px) {
+  #main-row {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .col-7 {
+    width: 100vw;
+    height: 30vh;
+  }
+  #cluster-map {
+    height: 30vh;
+  }
+  .col-5 {
+    width: 100vw;
+  }
+}
+
+@media (min-width: 456px) {
+  .col-7 {
+    height: 100vh;
+  }
+}

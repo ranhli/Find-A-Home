@@ -1,0 +1,13 @@
+@media (max-width: 767px) {
+  .image {
+    height: 1.5em;
+  }
+  .text {
+    font-size: small;
+  }
+}
+@media (min-width: 767px) {
+  .image {
+    height: 4em;
+  }
+}

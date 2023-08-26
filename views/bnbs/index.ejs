@@ -5,11 +5,12 @@
   integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
   crossorigin="anonymous"
 ></script>
+<link rel="stylesheet" href="/styles/index.css" />
 
 <%- include("../partials/typeSelect.ejs") %>
 
 <div class="container">
-  <div class="row">
+  <div class="row" id="main-row">
     <div class="col-5">
       <div class="container" id="bnb-container">
         <% for (let bnb of bnbs.docs) { %>
@@ -43,11 +44,8 @@
         >
       </div>
     </div>
-
-    <div class="col-7 mb-3">
-      <div class="sticky-top">
-        <div id="cluster-map"></div>
-      </div>
+    <div class="col-7 mb-3 sticky-top">
+      <div id="cluster-map"></div>
     </div>
   </div>
 </div>
