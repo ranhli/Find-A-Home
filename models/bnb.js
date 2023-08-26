@@ -37,7 +37,7 @@ const bnbSchema = new Schema(
 );
 
 bnbSchema.virtual("properties.popUpMsg").get(function () {
-  return `<a href="/homes/${this._id}">${this.title}</a>`;
+  return `<a href="/homes/${this._id}">${this.title} ${this.type}</a>`;
 });
 
 bnbSchema.post("findOneAndDelete", async function (bnb) {
