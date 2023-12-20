@@ -54,47 +54,29 @@
           </div>
           <div class="col-1"></div>
           <div class="col-5">
-            <h1>Register Now!</h1>
-            <form
-              action="/register"
-              method="POST"
-              class="needs-validation"
-              novalidate
-            >
-              <div class="mb-3">
-                <label class="form-label" for="username">Username</label>
-                <input
-                  class="form-control"
-                  type="text"
-                  id="username"
-                  name="username"
-                  required
-                />
-              </div>
-              <div class="mb-3">
-                <label class="form-label" for="email">E-Mail</label>
-                <input
-                  class="form-control"
-                  type="email"
-                  id="email"
-                  name="email"
-                  required
-                />
-              </div>
-              <div class="mb-3">
-                <label class="form-label" for="password">Password</label>
-                <input
-                  class="form-control"
-                  type="password"
-                  id="password"
-                  name="password"
-                  required
-                />
-              </div>
+            <h1 class="mb-3">Register Now!</h1>
+            <form action="/register" method="GET">
               <button
                 class="btn btn-lg btn-secondary font-weight-bold border-white bg-white"
               >
                 Register
+              </button>
+            </form>
+            <h1 class="m-3">Ask a travel advisor</h1>
+            <form action="/chat" method="POST">
+              <div style="width: 80%; margin: auto">
+                <input
+                  class="form-control mb-3"
+                  type="text"
+                  name="message"
+                  id="message"
+                />
+              </div>
+              <button
+                type="submit"
+                class="btn btn-lg btn-secondary font-weight-bold border-white bg-white m-3"
+              >
+                Send Message
               </button>
             </form>
           </div>

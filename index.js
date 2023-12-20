@@ -75,6 +75,8 @@ app.use((req, res, next) => {
   next();
 });
 
+const chat = require("./routes/chat");
+app.use("/chat", chat);
 const bnbs = require("./routes/bnbs");
 app.use("/homes", bnbs);
 const reviews = require("./routes/reviews");
