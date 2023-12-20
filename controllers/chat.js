@@ -1,8 +1,10 @@
 const OpenAI = require("openai");
+const organization = process.env.ORGANIZATION;
+const apiKey = process.env.APIKEY;
 
 const openai = new OpenAI({
-  organization: "org-XFfPhAcdTBCF7iTnaYsGt21p",
-  apiKey: "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",
+  organization: organization,
+  apiKey: apiKey,
 });
 
 module.exports.renderChatForm = (req, res) => {
